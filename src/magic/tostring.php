@@ -2,20 +2,27 @@
 
 
 //метод __toString()
-class Message
-{
-    public $text;
 
-    public function __construct($text)
-    {
-        $this->text = $text;
+class BankAccount
+{
+    private $accountNumber;
+
+    private $balance;
+
+    public function __construct(
+        $accountNumber,
+        $balance
+    ) {
+        $this->accountNumber = $accountNumber;
+        $this->balance = $balance;
     }
-    public function __toString(): string
+
+    public function __toString()
     {
-       return $this->text;
+        return "Bank Account: $this->accountNumber. Balance: $$this->balance";
     }
 }
 
-$message = new Message('I`m sting');
-echo $message;
 
+$account = new BankAccount('123456789', 100);
+echo $account;
