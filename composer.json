@@ -1,0 +1,19 @@
+{
+    "name": "pleskahcov/php-pro",
+    "type": "project",
+    "require": {
+        "monolog/monolog": "3.x-dev"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Pleskahcov\\PhpPro\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Artem Pleskachov"
+        }
+    ],
+    "minimum-stability": "dev"
+}

@@ -17,7 +17,7 @@ class FileRepository implements ICodeRepository
     public function __construct(string $fileDb)
     {
         $this->fileDb = $fileDb;
-        $this->getDbFromStorage(); //Помічу тут цей метод, мабудь рано до нього.
+        $this->getDbFromStorage();
     }
     //За допомогою getDbFromStorage ми передаємо декодовані дані з json в зміну $fileDb
     //і також робимо перевірку, якщо файл існує то достаємо з нього дані
@@ -57,9 +57,9 @@ class FileRepository implements ICodeRepository
         return $code;
     }
 
-    protected function writeFile(string $content): void //звідкіля появився $content
+    protected function writeFile(string $content): void
     {
-        $file = fopen($this->fileDb, 'W+');
+        $file = fopen($this->fileDb, 'w+');
         fwrite($file, $content);
         fclose($file);
     }
