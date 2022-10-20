@@ -1,5 +1,5 @@
 <?php
-namespace PhpPro\Programa\Exceptions;
+namespace Pleskachov\PhpPro\Programa\Exceptions;
 
 use Exception;
 

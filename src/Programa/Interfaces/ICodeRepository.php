@@ -1,8 +1,9 @@
 <?php
 
-namespace PhpPro\Programa\Interfaces;
+namespace Pleskachov\PhpPro\Programa\Interfaces;
 
 use InvalidArgumentException;
+use Pleskachov\PhpPro\Programa\ValueObject\UrlCodePair;
 
 
 interface ICodeRepository

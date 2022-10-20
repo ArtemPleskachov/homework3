@@ -1,5 +1,5 @@
 <?php
-namespace PhpPro\Programa\ValueObject;
+namespace Pleskachov\PhpPro\Programa\ValueObject;
 
 class UrlCodePair
 {

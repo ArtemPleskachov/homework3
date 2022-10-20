@@ -1,5 +1,5 @@
 <?php
-namespace PhpPro\Programa\Interfaces;
+namespace Pleskachov\PhpPro\Programa\Interfaces;
 
 use InvalidArgumentException;
 

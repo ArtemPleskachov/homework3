@@ -1,42 +1,35 @@
 <?php
-namespace PhpPro\Programa;
+namespace Pleskachov\PhpPro\Programa;
 
 use InvalidArgumentException;
-use PhpPro\Programa\Interfaces\{
-    ICodeRepository,
-    IUrlDecoder,
-    IUrlEncoder
-};
-
-use PhpPro\Programa\{
+use Pleskachov\PhpPro\Programa\Interfaces\{ICodeRepository, IUrlDecoder, IUrlEncoder, IUrlValidator};
+use Pleskachov\PhpPro\Programa\{
     Exceptions\DataNotFoundException,
-    ValueObject\UrlCodePair
-};
+    ValueObject\UrlCodePair};
 
 class UrlConverter implements IUrlEncoder, IUrlDecoder
 {
     const CODE_LENGTH = 10;
+    const CODE_CHAIRS = '0123456789abcdefghijklmnoprstuywxyz';
 
+    protected IUrlValidator $validator;
     protected ICodeRepository $repository;
     protected int $codeLength;
-    protected string $codeChairs = '0123456789abcdefghijklmnoprstuywxyz';
 
     /**
      * @param ICodeRepository $repository
      * @param int $codeLength
      */
-    public function __construct(ICodeRepository $repository, int $codeLength = self::CODE_LENGTH) //тут робимо фішку зі статичними методами хз, треба дивитись відео або запитати
+
+    public function __construct(
+        ICodeRepository $repository,
+        IUrlValidator $validator,
+        int $codeLength = self::CODE_LENGTH)
     {
         $this->repository = $repository;
+        $this->validator = $validator;
         $this->codeLength = $codeLength;
     }
-
-    public function encodeAnyway(string $url): string
-    {
-        $this->validateUrl($url);
-        return $this->generateAndSaveCode($url);
-    }
-
 
     public function decode(string $code): string
     {
@@ -77,34 +70,23 @@ class UrlConverter implements IUrlEncoder, IUrlDecoder
         return $code;
     }
 
-    protected function validateUrl(string $url): bool
-    {
-        if (empty($url)
-            || !filter_var($url, FILTER_VALIDATE_URL)
-            || !$this->checkRealUrl($url)) {
-            throw new \http\Exception\InvalidArgumentException('Url not work');
-        }
-        return true;
-    }
-
-    protected function checkRealUrl(string $url): bool
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_NOBODY, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_exec($ch);
-        $response = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        return ($response === 200 || $response === 301);
-    }
-
     protected function generateUniqueCode(): string
     {
         $date = new \DateTime();
-        $str = $this->codeChairs . mb_strtoupper($this->codeChairs) . $date->getTimestamp();
+        $str = static::CODE_CHAIRS . mb_strtoupper(static::CODE_CHAIRS) . $date->getTimestamp();
         return substr(str_shuffle($str), 0, $this->codeLength);
 
     }
+
+    protected function validateUrl(string $url): bool
+    {
+        return $this->validator->validateUrl($url);
+    }
+
+    /**
+     * @param string $code
+     * @return string
+     */
 
 
 
