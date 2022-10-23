@@ -5,7 +5,8 @@
         "monolog/monolog": "3.x-dev",
       "ext-curl": "*",
       "ext-mbstring": "*",
-        "fgribreau/mailchecker": "dev-master"
+        "fgribreau/mailchecker": "dev-master",
+        "guzzlehttp/guzzle": "7.5.x-dev"
     },
     "license": "MIT",
     "autoload": {

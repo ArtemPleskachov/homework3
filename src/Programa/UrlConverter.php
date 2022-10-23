@@ -3,8 +3,8 @@ namespace Pleskachov\PhpPro\Programa;
 
 use InvalidArgumentException;
 use Pleskachov\PhpPro\Programa\Interfaces\{ICodeRepository, IUrlDecoder, IUrlEncoder, IUrlValidator};
-use Pleskachov\PhpPro\Programa\{
-    Exceptions\DataNotFoundException,
+use Pleskachov\PhpPro\Programa\{Exceptions\DataNotFoundException,
+    Utility\SingletonLogger,
     ValueObject\UrlCodePair,
     Utility\UrlValidator};
 use Psr\Log\LoggerInterface;
@@ -18,8 +18,6 @@ class UrlConverter implements IUrlEncoder, IUrlDecoder
     protected ICodeRepository $repository;
     protected int $codeLength;
 
-    protected LoggerInterface $logger;
-
     /**
      * @param ICodeRepository Pleskachov
      * @param int $codeLength
@@ -28,10 +26,8 @@ class UrlConverter implements IUrlEncoder, IUrlDecoder
     public function __construct(
         ICodeRepository $repository,
         IUrlValidator $validator,
-        LoggerInterface $logger,
         int $codeLength = self::CODE_LENGTH)
     {
-        $this->logger = $logger;
         $this->repository = $repository;
         $this->validator = $validator;
         $this->codeLength = $codeLength;
@@ -42,7 +38,7 @@ class UrlConverter implements IUrlEncoder, IUrlDecoder
         try {
             $code = $this->repository->getUrlByCode($code);
         } catch (DataNotFoundException $e) {
-            $this->logger->error($e->getMessage());
+            SingletonLogger::error($e->getMessage());
             throw new InvalidArgumentException(
                 $e->getMessage(),
                 $e->getCode(),
@@ -91,7 +87,7 @@ class UrlConverter implements IUrlEncoder, IUrlDecoder
             $result = $this->validator->validateUrl($url);
         }
         catch (InvalidArgumentException $e) {
-            $this->logger->error($e->getMessage() . ' - ' . $url);
+            SingletonLogger::error($e->getMessage() . ' - ' . $url);
             throw $e;
         }
         return $result;

@@ -1,11 +1,23 @@
 <?php
 namespace Pleskachov\PhpPro\Programa\Utility;
 
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\ConnectException;
 use Pleskachov\PhpPro\Programa\Interfaces\IUrlValidator;
+use InvalidArgumentException;
 
 
 class UrlValidator implements IUrlValidator
 {
+    protected ClientInterface $client;
+
+    /**
+     * @param ClientInterface $client
+     */
+    public function __construct(ClientInterface $client)
+    {
+        $this->client = $client;
+    }
 
     /**
      * @param string $url
@@ -17,7 +29,7 @@ class UrlValidator implements IUrlValidator
         if (empty($url)
             || !filter_var($url, FILTER_VALIDATE_URL)
             || !$this->checkRealUrl($url)) {
-            throw new \InvalidArgumentException('Url not work');
+            throw new InvalidArgumentException('Url not work');
         }
         return true;
     }
@@ -27,12 +39,15 @@ class UrlValidator implements IUrlValidator
      */
     public function checkRealUrl(string $url): bool
     {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_NOBODY, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_exec($ch);
-        $response = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        return ($response === 200 || $response === 301);
+        $allowCodes = [
+          200, 201, 301, 302
+        ];
+        try {
+            $response = $this->client->request('GET', $url);
+            return (!empty($response->getStatusCode()) && in_array($response->getStatusCode(), $allowCodes));
+        } catch (ConnectException $exception) {
+            throw new \InvalidArgumentException($exception->getMessage(), $exception->getCode());
+        }
+
     }
 }

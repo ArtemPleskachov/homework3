@@ -2,7 +2,7 @@
 namespace Pleskachov\PhpPro\Programa;
 
 use Pleskachov\PhpPro\Programa\Exceptions\DataNotFoundException;
-use Pleskachov\PhpPro\Programa\Utility\UrlValidator;
+//use Pleskachov\PhpPro\Programa\Utility\UrlValidator;
 use Pleskachov\PhpPro\Programa\Interfaces\ICodeRepository;
 use Pleskachov\PhpPro\Programa\ValueObject\UrlCodePair;
 

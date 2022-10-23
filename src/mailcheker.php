@@ -22,7 +22,7 @@ require_once 'vendor/autoload.php';
 $email = 'pleskachov@icloud.com';
 
 if(!MailChecker::isValid($email)) {
-    echo 'Is email not valid';
+    echo 'Is email not valid' . PHP_EOL;
 } else {
-    echo 'Is email valid';
+    echo 'Is email valid' . PHP_EOL;
 }

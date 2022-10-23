@@ -2,3 +2,5 @@
 [2022-10-23T10:42:25.582730+00:00] general.INFO: 222 [] []
 [2022-10-23T11:12:37.624465+00:00] general.ERROR: Url not work [] []
 [2022-10-23T11:15:49.720430+00:00] general.ERROR: Url not work - https://google2.com/ [] []
+[2022-10-23T16:08:54.159240+00:00] general.ERROR: cURL error 6: Could not resolve host: google2.com (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://google2.com/ - https://google2.com/ [] []
+[2022-10-23T19:46:54.476917+00:00] general.ERROR: cURL error 6: Could not resolve host: googlwww22e.com (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://googlwww22e.com/ - https://googlwww22e.com/ [] []
