@@ -4,8 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b513c44e1d1fb6c494f18a7d6d91eb8",
+    "content-hash": "3b80354374ff7f1df4ec330b739ad832",
     "packages": [
+        {
+            "name": "fgribreau/mailchecker",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FGRibreau/mailchecker.git",
+                "reference": "aab498aeeb1fb9521f78b3cd99803aec667bd6f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FGRibreau/mailchecker/zipball/aab498aeeb1fb9521f78b3cd99803aec667bd6f1",
+                "reference": "aab498aeeb1fb9521f78b3cd99803aec667bd6f1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "platform/php/MailChecker.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Temporary (disposable/throwaway) email detection library. Covers 1987 fake email providers.",
+            "keywords": [
+                "detection",
+                "disposable",
+                "email",
+                "fake"
+            ],
+            "support": {
+                "issues": "https://github.com/FGRibreau/mailchecker/issues",
+                "source": "https://github.com/FGRibreau/mailchecker/tree/master"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/fgribreau",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-10-10T09:52:38+00:00"
+        },
         {
             "name": "monolog/monolog",
             "version": "dev-main",
@@ -164,7 +214,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "monolog/monolog": 20
+        "monolog/monolog": 20,
+        "fgribreau/mailchecker": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

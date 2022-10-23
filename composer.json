@@ -4,7 +4,8 @@
     "require": {
         "monolog/monolog": "3.x-dev",
       "ext-curl": "*",
-      "ext-mbstring": "*"
+      "ext-mbstring": "*",
+        "fgribreau/mailchecker": "dev-master"
     },
     "license": "MIT",
     "autoload": {
