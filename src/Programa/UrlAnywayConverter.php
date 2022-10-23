@@ -1,6 +1,9 @@
 <?php
 
-namespace Pleskachov\PhpPro\Programa;
+namespace Pleskachov\PhpPro\Programa\Utility;
+
+use Pleskachov\PhpPro\Programa\UrlConverter;
+
 
 class UrlAnywayConverter extends UrlConverter
 {

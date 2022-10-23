@@ -1,9 +1,10 @@
 <?php
-namespace PhpPro\Programa;
+namespace Pleskachov\PhpPro\Programa;
 
-use PhpPro\Programa\Exceptions\DataNotFoundException;
-use PhpPro\Programa\Interfaces\ICodeRepository;
-use PhpPro\Programa\ValueObject\UrlCodePair;
+use Pleskachov\PhpPro\Programa\Exceptions\DataNotFoundException;
+use Pleskachov\PhpPro\Programa\Utility\UrlValidator;
+use Pleskachov\PhpPro\Programa\Interfaces\ICodeRepository;
+use Pleskachov\PhpPro\Programa\ValueObject\UrlCodePair;
 
 
 class FileRepository implements ICodeRepository
@@ -14,27 +15,25 @@ class FileRepository implements ICodeRepository
     /**
      * @param string $fileDb
      */
+
+    public function __destruct()
+    {
+        $this->writeFile(json_encode($this->db));
+    }
+
     public function __construct(string $fileDb)
     {
         $this->fileDb = $fileDb;
         $this->getDbFromStorage();
     }
-    //За допомогою getDbFromStorage ми передаємо декодовані дані з json в зміну $fileDb
-    //і також робимо перевірку, якщо файл існує то достаємо з нього дані
-    protected function getDbFromStorage()
+    //UrlCodePair $urlCodePair
+    public function saveEntity(UrlCodePair $urlCodePair): bool
     {
-        if (file_exists($this->fileDb)) {
-            $content = file_get_contents($this->fileDb);
-            $this->db = (array)json_decode($content, true);
-        }
-    }
-
-    public function saveEntity(UrlCodePair|Interfaces\UrlCodePair $urlCodePair): bool
-    {
-        $this->db[$urlCodePair->getCode()] = $urlCodePair->getUrl(); //Масив с ключом Code дорівнює Url
+        $this->db[$urlCodePair->getCode()] = $urlCodePair->getUrl(); //Масив с ключем Code дорівнює Url
         return true;
     }
-
+    //За допомогою getDbFromStorage ми передаємо декодовані дані з json в зміну $fileDb
+    //і також робимо перевірку, якщо файл існує, то достаємо з нього дані
 
     public function codeIsset(string $code): bool
     {
@@ -64,8 +63,13 @@ class FileRepository implements ICodeRepository
         fclose($file);
     }
 
-    public function __destruct()
+    protected function getDbFromStorage()
     {
-        $this->writeFile(json_encode($this->db));
+        if (file_exists($this->fileDb)) {
+            $content = file_get_contents($this->fileDb);
+            $this->db = (array)json_decode($content, true);
+        }
     }
+
+
 }

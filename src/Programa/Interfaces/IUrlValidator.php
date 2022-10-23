@@ -7,7 +7,7 @@ interface IUrlValidator
 {
     /**
      * @param string $url
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return bool
      */
     public function validateUrl(string $url): bool;

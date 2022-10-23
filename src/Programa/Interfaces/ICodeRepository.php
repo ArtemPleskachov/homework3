@@ -2,7 +2,7 @@
 
 namespace Pleskachov\PhpPro\Programa\Interfaces;
 
-use InvalidArgumentException;
+use Pleskachov\PhpPro\Programa\Exceptions\DataNotFoundException;
 use Pleskachov\PhpPro\Programa\ValueObject\UrlCodePair;
 
 

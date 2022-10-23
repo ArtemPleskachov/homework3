@@ -2,12 +2,14 @@
     "name": "pleskahcov/php-pro",
     "type": "project",
     "require": {
-        "monolog/monolog": "3.x-dev"
+        "monolog/monolog": "3.x-dev",
+      "ext-curl": "*",
+      "ext-mbstring": "*"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Pleskahcov\\PhpPro\\": "src/"
+            "Pleskachov\\PhpPro\\": "src/"
         }
     },
     "authors": [

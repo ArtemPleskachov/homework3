@@ -3,18 +3,21 @@ namespace Pleskachov\PhpPro\Programa\Utility;
 
 use Pleskachov\PhpPro\Programa\Interfaces\IUrlValidator;
 
+
 class UrlValidator implements IUrlValidator
 {
 
     /**
-     * @inheritDoc
+     * @param string $url
+     * @return bool
      */
+
     public function validateUrl(string $url): bool
     {
         if (empty($url)
             || !filter_var($url, FILTER_VALIDATE_URL)
             || !$this->checkRealUrl($url)) {
-            throw new \http\Exception\InvalidArgumentException('Url not work');
+            throw new \InvalidArgumentException('Url not work');
         }
         return true;
     }
