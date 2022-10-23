@@ -35,7 +35,7 @@ class ComposerStaticInite91c5097174f0a45a0a25f3c3a1f83e5
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'MailChecker' => __DIR__ . '/..' . '/fgribreau/mailchecker/platform/php/MailChecker.php',
+        'MailCheker\\MailChecker' => __DIR__ . '/..' . '/fgribreau/mailchecker/platform/php/MailChecker.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

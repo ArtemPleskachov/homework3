@@ -7,5 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'MailChecker' => $vendorDir . '/fgribreau/mailchecker/platform/php/MailChecker.php',
+    'MailCheker\\MailChecker' => $vendorDir . '/fgribreau/mailchecker/platform/php/MailChecker.php',
 );

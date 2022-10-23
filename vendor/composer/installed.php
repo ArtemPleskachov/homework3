@@ -3,7 +3,7 @@
         'name' => 'pleskahcov/php-pro',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f4ec9a5bf2829e840e1d5efc93d26d75a3cb0c37',
+        'reference' => 'a8812ec1e92cd6c85b29adf4840cb88ee4a63484',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -35,7 +35,7 @@
         'pleskahcov/php-pro' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f4ec9a5bf2829e840e1d5efc93d26d75a3cb0c37',
+            'reference' => 'a8812ec1e92cd6c85b29adf4840cb88ee4a63484',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
