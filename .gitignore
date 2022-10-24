@@ -1,9 +1,9 @@
-/vendor/
-/vendor/monolog/
-/vendor/fgribreau/
-/vendor/composer/
-/vendor/psr/
-hs_err_pid13720.log
 .idea
-!/vendor/autoload.php
-
+hs_err_pid13720.log
+/vendor/composer/
+/vendor/fgribreau/
+/vendor/guzzlehttp/
+/vendor/monolog/
+/vendor/psr/
+/vendor/ralouphie/
+/vendor/symfony/
