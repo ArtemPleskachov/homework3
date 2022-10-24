@@ -1,1 +1,10 @@
 /vendor/
+/vendor/monolog/
+/vendor/fgribreau/
+/vendor/composer/
+/vendor/psr/
+hs_err_pid13720.log
+.idea
+hs_err_pid13720.log
+vendor\
+vendor/
