@@ -5,6 +5,5 @@
 /vendor/psr/
 hs_err_pid13720.log
 .idea
-hs_err_pid13720.log
-vendor\
-vendor/
+!/vendor/autoload.php
+
