@@ -2,9 +2,6 @@
 namespace Pleskachov\PhpPro\Programa\Utility;
 
 use Monolog\Handler\AbstractProcessingHandler;
-//use Monolog\Handler\StreamHandler;
-//use Monolog\Level;
-//use Monolog\Logger;
 use Psr\Log\LoggerInterface;
 
 class SingletonLogger
@@ -110,6 +107,6 @@ class SingletonLogger
 
     public static function log($level, \Stringable|string $message, array $context = []): void
     {
-        self::getInstance()->getLogger()->log($message, $context);
+        self::getInstance()->getLogger()->log($message, $message, $context);
     }
 }

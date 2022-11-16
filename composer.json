@@ -6,7 +6,8 @@
       "ext-curl": "*",
       "ext-mbstring": "*",
         "fgribreau/mailchecker": "dev-master",
-        "guzzlehttp/guzzle": "7.5.x-dev"
+        "guzzlehttp/guzzle": "7.5.x-dev",
+        "psr/container": "2.0.x-dev"
     },
     "license": "MIT",
     "autoload": {

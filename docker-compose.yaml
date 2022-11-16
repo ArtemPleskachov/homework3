@@ -15,13 +15,18 @@ services:
     volumes:
       - ./:/srv/src/hillelpro
 
-  nginx:
-    container_name: php_server
-    image: nginx:latest
-    ports:
-      - "80:80"
-      - "443:443"
     links:
-      - php
+      - db_mysql
 
-
+  db_mysql:
+    image: mysql:latest
+    container_name: php_app_2_mysql
+    ports:
+      - 13306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: firstdb
+      MYSQL_USER: artist
+      MYSQL_PASSWORD: qwerty
+    volumes:
+      - ./docker-configs/databases/mysql_dump:/docker-entrypoint-initdb.d

@@ -1,7 +1,12 @@
 <?php
+
+namespace Training\urlchange;
+
+use Training\urlchange\interfaces\IUrlDecoder;
+use Training\urlchange\interfaces\IUrlEncoder;
+
 require_once 'src/urlchange/interfaces/IUrlDecoder.php';
 require_once 'src/urlchange/interfaces/IUrlEncoder.php';
-
 
 
 class Validator
@@ -30,14 +35,14 @@ class Validator
 class Converter implements IUrlEncoder, IUrlDecoder
 {
     protected array $dataStorage = [];
-    protected Validator $validator;
+    protected \Validator $validator;
     protected string $filePathStorage;
 
     /**
-     * @param Validator $validator
+     * @param \Validator $validator
      * @param string $filePathStorage
      */
-    public function __construct(Validator $validator, string $filePathStorage)
+    public function __construct(\Validator $validator, string $filePathStorage)
     {
         $this->validator = $validator; //підключення класу Validator для валідації файлу.
         $this->filePathStorage = $filePathStorage; //файл з шляхом до файлу нашої так званної  БД
@@ -95,8 +100,7 @@ class Converter implements IUrlEncoder, IUrlDecoder
 $filePathStorage = __DIR__ . '/../../storage/db.json';
 
 $validator = new Validator();
-$converter = new Converter($validator, '$filePathStorage');
-
+$converter = new \Training\urlchange\Converter($validator, '$filePathStorage');
 
 
 $url = 'https://google.com/';
@@ -105,7 +109,6 @@ $code2 = $converter->encode('https://github.com/ArtemPleskachov/homework3');
 $code3 = $converter->encode('https://www.w3schools.com/php/filter_validate_url.asp');
 
 $url2 = $converter->decode($code);
-
 
 
 exit;

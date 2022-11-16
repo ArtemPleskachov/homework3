@@ -1,5 +1,8 @@
 <?php
 
+use Training\urlchange\interfaces\IUrlDecoder;
+use Training\urlchange\interfaces\IUrlEncoder;
+
 require_once 'src/urlchange/interfaces/IUrlDecoder.php';
 require_once 'src/urlchange/interfaces/IUrlEncoder.php';
 
@@ -86,7 +89,7 @@ class Converter implements IUrlEncoder, IUrlDecoder
 }
 
 $validator = new Validator(); // Створюю об'єкт Валідатор
-$converter = new Converter($validator, ''); //Свтроюєм об'єкт Конвектор і в нього погружаємо об'єкт Валідатор
+$converter = new \Training\urlchange\Converter($validator, ''); //Свтроюєм об'єкт Конвектор і в нього погружаємо об'єкт Валідатор
 
 
 $code = $converter->encode('https://google.com/'); //За допомогою -> передаємо у метод encode наш URL
