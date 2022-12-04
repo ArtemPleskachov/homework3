@@ -99,4 +99,9 @@ $code3 = $converter->encode('https://www.w3schools.com/php/filter_validate_url.a
 $url2 = $converter->decode($code); //це для розкудування.
 
 
+
+
+
+
+
 exit;

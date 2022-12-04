@@ -48,3 +48,5 @@ try {
 }
 echo PHP_EOL;
 echo separator();
+
+exit;
