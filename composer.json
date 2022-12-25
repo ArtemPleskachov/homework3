@@ -2,13 +2,18 @@
     "name": "pleskahcov/php-pro",
     "type": "project",
     "require": {
-        "monolog/monolog": "3.x-dev",
+      "illuminate/database": "v9.*",
+      "doctrine/orm": "*",
+      "monolog/monolog": "3.*",
+      "guzzlehttp/guzzle": "7.*",
+      "nesbot/carbon": "2.*",
+      "psr/container": "*",
       "ext-curl": "*",
-      "ext-mbstring": "*",
-        "fgribreau/mailchecker": "dev-master",
-        "guzzlehttp/guzzle": "7.5.x-dev",
-        "psr/container": "2.0.x-dev",
-      "ext-pdo": "*"
+      "ufo-cms/colored_cli": " *",
+      "ext-readline": "*",
+      "ext-pdo": "*",
+      "symfony/cache": "6.3.x-dev",
+      "fgribreau/mailchecker": "dev-master"
     },
     "license": "MIT",
     "autoload": {
